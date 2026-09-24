@@ -1,10 +1,9 @@
-import StoryCard from "@/components/StoryCard";
-import Titel from "@/components/Titel";
 import React from "react";
+import Link from "next/link";
 
-
-const Stories = () => {
-    const DevStroyData = [
+const StoryDetailspage = async ({ params }) => {
+  const { id } = await params;
+  const DevStroyData = [
     {
       id: 1,
       name: "Md Sohel Rana",
@@ -288,22 +287,102 @@ const Stories = () => {
     },
   ];
 
+  const story = DevStroyData.find((story) => story.id == id);
+  if (!story) {
+    return (
+      <div className="min-h-screen bg-slate-950 flex flex-col items-center justify-center text-white px-4">
+        <h2 className="text-2xl font-bold mb-4">Story Not Found</h2>
+        <Link
+          href="/"
+          className="rounded-full bg-white px-6 py-2.5 text-slate-900 font-semibold text-sm hover:bg-indigo-100 transition-all"
+        >
+          ← Back to Home
+        </Link>
+      </div>
+    );
+  }
+
   return (
-    <div className="min-h-screen  bg-gradient-to-br from-violet-950 to-slate-950  px-4 rounded-2xl py-12 md:px-8 lg:px-12">
-      <div className="mx-auto max-w-8xl">
-        <div className="mb-10 text-center">
-          <Titel>Explore Stories of Developer</Titel>
+    <div className="min-h-screen bg-gradient-to-br from-violet-950 to-slate-950 px-4 py-12 md:px-8 rounded-2xl lg:px-12">
+      <div className="max-w-9xl mx-auto relative overflow-hidden rounded-3xl bg-slate-950 p-6 sm:p-8 md:p-10 shadow-2xl border border-white/10  bg-gradient-to-br from-slate-950 via-indigo-950 to-violet-950">
+        {/* Glow Effects matching Banner */}
+        <div className="absolute -top-32 -right-32 h-64 w-64 rounded-full bg-indigo-500/20 blur-3xl pointer-events-none" />
+        <div className="absolute -bottom-32 -left-32 h-64 w-64 rounded-full bg-violet-500/20 blur-3xl pointer-events-none" />
+
+        {/* Top Section */}
+        <div className="relative z-10 flex flex-col sm:flex-row items-center sm:items-start gap-6 text-center sm:text-left">
+          <img
+            src={story.image}
+            alt={story.name}
+            className="w-24 h-24 sm:w-28 sm:h-28 rounded-full object-cover ring-4 ring-indigo-500/40 shadow-xl"
+          />
+          <div className="space-y-1">
+            <h1 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
+              {story.name}
+            </h1>
+            <p className="text-slate-300 font-medium text-sm sm:text-base">
+              {story.designation}
+            </p>
+            <p className="text-indigo-400 font-semibold text-sm">
+              {story.company}
+            </p>
+            <span className="inline-block mt-2 rounded-full bg-white/10 px-3 py-1 text-xs text-indigo-200 border border-white/10 backdrop-blur-md">
+              Experience: {story.experience}
+            </span>
+          </div>
         </div>
 
-        {/* Responsive Grid Layout Container */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {DevStroyData.map((story) => (
-            <StoryCard key={story.id} story={story} />
-          ))}
+        {/* Story */}
+        <div className="relative z-10 mt-8 border-t border-white/10 pt-6">
+          <h2 className="text-lg sm:text-xl font-bold text-white mb-3 flex items-center gap-2">
+            📖 Learning Story
+          </h2>
+          <p className="text-slate-300 text-sm sm:text-base leading-relaxed">
+            {story.story}
+          </p>
+        </div>
+
+        {/* About */}
+        <div className="relative z-10 mt-8 border-t border-white/10 pt-6">
+          <h2 className="text-lg sm:text-xl font-bold text-white mb-3 flex items-center gap-2">
+            💡 About Developer
+          </h2>
+          <p className="text-slate-300 text-sm sm:text-base leading-relaxed">
+            {story.about}
+          </p>
+        </div>
+
+        {/* Skills */}
+        <div className="relative z-10 mt-8 border-t border-white/10 pt-6">
+          <h2 className="text-lg sm:text-xl font-bold text-white mb-3 flex items-center gap-2">
+            ⚡ Skills & Technologies
+          </h2>
+          <div className="flex flex-wrap gap-2">
+            {story.skills.map((skill, index) => (
+              <span
+                key={index}
+                className="bg-indigo-500/10 border border-indigo-500/30 text-indigo-300 px-3 py-1.5 rounded-full text-xs sm:text-sm font-medium shadow-sm"
+              >
+                {skill}
+              </span>
+            ))}
+          </div>
+        </div>
+
+        {/* Back Link Button */}
+        <div className="relative z-10 mt-10 pt-6 border-t border-white/10 flex justify-center sm:justify-start">
+          <Link
+            href="/"
+            className="rounded-full bg-white px-6 py-3 font-semibold text-slate-900 text-xs sm:text-sm shadow-xl transition-all duration-300 hover:bg-indigo-100 hover:shadow-indigo-500/20 inline-flex items-center gap-2"
+          >
+            <span className="bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 bg-clip-text text-transparent transition-all duration-300 group-hover:from-pink-400 group-hover:via-purple-400 group-hover:to-indigo-400">
+              <span>←</span> Back to All Stories
+            </span>
+          </Link>
         </div>
       </div>
     </div>
   );
 };
 
-export default Stories;
+export default StoryDetailspage;

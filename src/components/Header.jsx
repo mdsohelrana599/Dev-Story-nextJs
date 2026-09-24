@@ -1,7 +1,3 @@
-// 
-
-
-
 "use client";
 
 import Link from "next/link";
@@ -11,61 +7,119 @@ const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <header className="px-8 sticky top-0 z-50 bg-slate-950/90 backdrop-blur-md border-b border-slate-800">
-      <div className=" mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
-          
+    <header className="sticky top-0 z-50 border-b border-slate-800 bg-gradient-to-br from-slate-950 via-indigo-950 to-violet-950 px-4 backdrop-blur-md">
+      <div className="mx-auto px-2 sm:px-6 lg:px-8">
+        <div className="flex h-16 items-center justify-between">
           {/* Logo */}
           <Link
             href="/"
-            className="text-xl font-bold tracking-tight text-white hover:text-indigo-400 transition"
+            className="group flex items-center gap-2 text-xl font-bold tracking-tight text-white"
           >
-            Dev Story
+            <span className="transition-transform duration-300 group-hover:rotate-6">
+              🚀
+            </span>
+
+            <span className="bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 bg-clip-text text-transparent transition-all duration-300 group-hover:from-pink-400 group-hover:via-purple-400 group-hover:to-indigo-400">
+              Dev Story
+            </span>
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-8 font-medium">
+          <nav className="hidden items-center gap-2 md:flex">
+            {/* About */}
             <Link
               href="/abouts"
-              className="text-slate-300 hover:text-white transition"
+              className="group relative px-4 py-2 text-sm font-medium text-slate-300 rounded-full transition-all duration-300 hover:bg-slate-800 hover:text-white"
             >
-              About
+              <span className="bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 bg-clip-text text-transparent transition-all duration-300 group-hover:from-pink-400 group-hover:via-purple-400 group-hover:to-indigo-400">
+                About
+              </span>
+              <span className="absolute bottom-0 left-1/2 h-0.5 w-0 -translate-x-1/2 rounded-full bg-gradient-to-r from-indigo-400 to-purple-400 transition-all duration-300 group-hover:w-3/4 " />
             </Link>
+
+            {/* Stories */}
             <Link
               href="/stories"
-              className="text-slate-300 hover:text-white transition"
+              className="group relative px-4 py-2 text-sm font-medium text-slate-300 transition-all duration-300 rounded-full hover:bg-slate-800  hover:text-white"
             >
-              Stories
+              <span className="bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 bg-clip-text text-transparent transition-all duration-300 group-hover:from-pink-400 group-hover:via-purple-400 group-hover:to-indigo-400">
+                Stories
+              </span>
+              <span className="absolute bottom-0 left-1/2 h-0.5 w-0 -translate-x-1/2 rounded-full bg-gradient-to-r from-purple-400 to-pink-400 transition-all duration-300 group-hover:w-3/4" />
             </Link>
+            {/*Tutoriles */}
+            <Link
+              href="/tutorials"
+              className="group relative px-4 py-2 text-sm font-medium text-slate-300 transition-all duration-300 rounded-full hover:bg-slate-800  hover:text-white"
+            >
+              <span className="bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 bg-clip-text text-transparent transition-all duration-300 group-hover:from-pink-400 group-hover:via-purple-400 group-hover:to-indigo-400">
+                Tutorials
+              </span>
+              <span className="absolute bottom-0 left-1/2 h-0.5 w-0 -translate-x-1/2 rounded-full bg-gradient-to-r from-purple-400 to-pink-400 transition-all duration-300 group-hover:w-3/4" />
+            </Link>
+
+            {/* Login */}
             <Link
               href="/login"
-              className="text-slate-300 hover:text-white transition"
+              className="group relative flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium text-slate-300 transition-all duration-300 hover:bg-slate-800 hover:text-white"
             >
-              Login
+              <span className="absolute bottom-0 left-1/2 h-0.5 w-0 -translate-x-1/2 rounded-full bg-gradient-to-r from-purple-400 to-pink-400 transition-all duration-300 group-hover:w-3/4" />
+
+              <span className="bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 bg-clip-text text-transparent transition-all duration-300 group-hover:from-pink-400 group-hover:via-purple-400 group-hover:to-indigo-400">
+                Login
+              </span>
+
+              {/* Glow */}
+              <span className="absolute inset-0 -z-10 rounded-full bg-indigo-500/10 opacity-0 blur-md transition-opacity duration-300 group-hover:opacity-100" />
             </Link>
+
+            {/* Register */}
             <Link
               href="/register"
-              className="px-4 py-2 rounded-full bg-white text-slate-900 font-semibold hover:bg-slate-100 transition"
+              className="group relative px-4 py-2 text-sm font-medium text-slate-300 transition-all duration-300 rounded-full hover:bg-slate-800  hover:text-white"
             >
-              Register
+              <span className="bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 bg-clip-text text-transparent transition-all duration-300 group-hover:from-pink-400 group-hover:via-purple-400 group-hover:to-indigo-400">
+                Register
+              </span>
+              <span className="absolute bottom-0 left-1/2 h-0.5 w-0 -translate-x-1/2 rounded-full bg-gradient-to-r from-purple-400 to-pink-400 transition-all duration-300 group-hover:w-3/4" />
             </Link>
           </nav>
 
-          {/* Mobile menu button */}
+          {/* Mobile Menu Button */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden p-2 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800 transition"
+            className="rounded-lg p-2 text-slate-300 transition-all duration-300 hover:bg-slate-800 hover:text-white md:hidden"
             aria-label="Toggle menu"
           >
             {isOpen ? (
-              // Close icon
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              // Close
+              <svg
+                className="h-6 w-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M6 18L18 6M6 6l12 12"
+                />
               </svg>
             ) : (
-              // Hamburger icon
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+              // Hamburger
+              <svg
+                className="h-6 w-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
               </svg>
             )}
           </button>
@@ -74,35 +128,67 @@ const Header = () => {
 
       {/* Mobile Navigation */}
       {isOpen && (
-        <div className="md:hidden border-t border-slate-800 bg-slate-950">
-          <nav className="flex flex-col px-4 py-4 space-y-3">
+        <div className="border-t border-slate-800 bg-slate-950/95 md:hidden">
+          <nav className="flex flex-col gap-2 px-4 py-4">
+            {/* About */}
             <Link
-              href="/about"
+              href="/abouts"
               onClick={() => setIsOpen(false)}
-              className="px-3 py-2 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800 transition"
+              className="group flex items-center rounded-xl px-4 py-3 text-slate-300 transition-all duration-300 hover:bg-slate-800 hover:pl-6 hover:text-white"
             >
+              <span className="mr-3">👤</span>
               About
+              <span className="ml-auto opacity-0 transition-all duration-300 group-hover:translate-x-1 group-hover:opacity-100">
+                →
+              </span>
             </Link>
+
+            {/* Stories */}
             <Link
               href="/stories"
               onClick={() => setIsOpen(false)}
-              className="px-3 py-2 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800 transition"
+              className="group flex items-center rounded-xl px-4 py-3 text-slate-300 transition-all duration-300 hover:bg-slate-800 hover:pl-6 hover:text-white"
             >
+              <span className="mr-3">📖</span>
               Stories
+              <span className="ml-auto opacity-0 transition-all duration-300 group-hover:translate-x-1 group-hover:opacity-100">
+                →
+              </span>
             </Link>
+            <Link
+              href="/tutorials"
+              onClick={() => setIsOpen(false)}
+              className="group flex items-center rounded-xl px-4 py-3 text-slate-300 transition-all duration-300 hover:bg-slate-800 hover:pl-6 hover:text-white"
+            >
+              <span className="mr-3">😊</span>
+              Tutorials
+              <span className="ml-auto opacity-0 transition-all duration-300 group-hover:translate-x-1 group-hover:opacity-100">
+                →
+              </span>
+            </Link>
+
+            {/* Login */}
             <Link
               href="/login"
               onClick={() => setIsOpen(false)}
-              className="px-3 py-2 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800 transition"
+              className="group flex items-center rounded-xl px-4 py-3 text-slate-300 transition-all duration-300 hover:bg-indigo-500/10 hover:text-indigo-300"
             >
+              <span className="mr-3 text-lg transition-transform duration-300 group-hover:scale-110">
+                🔐
+              </span>
               Login
+              <span className="ml-auto opacity-0 transition-all duration-300 group-hover:translate-x-1 group-hover:opacity-100">
+                →
+              </span>
             </Link>
+
+            {/* Register */}
             <Link
               href="/register"
               onClick={() => setIsOpen(false)}
-              className="px-3 py-2 rounded-lg bg-white text-slate-900 font-semibold text-center hover:bg-slate-100 transition"
+              className="group flex items-center rounded-xl px-4 py-3 text-slate-300 transition-all duration-300 hover:bg-indigo-500/10 hover:text-indigo-300"
             >
-              Register
+              🔒 Register
             </Link>
           </nav>
         </div>
