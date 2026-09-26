@@ -299,7 +299,7 @@ const Settings = () => {
                 </div>
               </div>
 
-              <Toggle enabled={notifications} setEnabled={setNotifications} />
+              <Toggle enabled={notifications} setEnabled={setNotifications}></Toggle>
             </div>
 
             {/* Email Updates */}
@@ -316,7 +316,7 @@ const Settings = () => {
                 </div>
               </div>
 
-              <Toggle enabled={emailUpdates} setEnabled={setEmailUpdates} />
+              <Toggle enabled={emailUpdates} setEnabled={setEmailUpdates} ></Toggle>
             </div>
           </div>
         </div>
@@ -358,7 +358,7 @@ const Settings = () => {
                 </div>
               </div>
 
-              <Toggle enabled={privateAccount} setEnabled={setPrivateAccount} />
+              <Toggle enabled={privateAccount} setEnabled={setPrivateAccount}></Toggle>
             </div>
 
             {/* Activity */}
